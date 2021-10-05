@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: plum;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: left; margin-top: 100px;margin-left:300px;  background-color: cadetblue; color: cornsilk;border: 3px solid orange; width: 60%;">
+        <p style="margin-left: 25px;margin-top: 20px; "><b>First Name:-</b> <span id="fname"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"> <b>Last Name:- </b><span id="lname"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"><b>Email Address:-</b> <span id="email"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"> <b> Address 1:-</b> <span id="address1"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"> <b> Address 2:-</b> <span id="address2"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"> <b> City:-</b> <span id="city"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"><b>State:-</b> <span id="state"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"> <b>Postcode:-</b> <span id="postcode"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"> <b>Payment Type:-</b> <span id="pay_Type"></span></p>
+        <p style="margin-left: 25px; margin-top: 20px;"> <b>Amount:-$</b><span id="amount"></span></p>
+    </div>
+</body>
+<script>
+    var fname = localStorage.getItem('fname');
+    document.getElementById('fname').innerHTML = fname;
+
+    var lname = localStorage.getItem('lname');
+    document.getElementById('lname').innerHTML = lname;
+
+    var email = localStorage.getItem('email');
+    document.getElementById('email').innerHTML = email;
+
+    var address1 = localStorage.getItem('address1');
+    document.getElementById('address1').innerHTML = address1;
+
+    var address2 = localStorage.getItem('address2');
+    document.getElementById('address2').innerHTML = address2;
+
+    var city = localStorage.getItem('city');
+    document.getElementById('city').innerHTML = city;
+
+    var postcode = localStorage.getItem('postcode');
+    document.getElementById('postcode').innerHTML = postcode;
+
+    var state = localStorage.getItem('state');
+    document.getElementById('state').innerHTML = state;
+
+    var pay_Type = localStorage.getItem('pay_Type');
+    document.getElementById('pay_Type').innerHTML = pay_Type;
+
+    var totalamount = localStorage.getItem('totalamount');
+    document.getElementById('amount').innerHTML = totalamount;
+</script>
+
+</html>

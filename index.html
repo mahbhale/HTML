@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1 style="background-color: black;text-align: center;color: white;height: 50px;"> <span> <img src="images/logo.png" alt="" style="width: 150px;height: 50px;float: left;"></span>Car Rental Center
+            <a href="card.html"><input type="button" class="btn" value="Car Reservation" style="font-size: 16px;float: right;border:none;margin-right: 20px;margin-top: 10px;"></a>
+        </h1>
+    </div>
+    <div id="single_product" style="background-color: rgb(244, 241, 247);height: auto;"></div>
+
+
+    <script>
+        GetData();
+
+
+        function submit(id) {
+
+            console.log(id);
+            show(id);
+
+        }
+
+
+
+        function show(id) {
+            $.getJSON("cars.json", function(myObj) {
+                let count = Object.keys(myObj.cars[0]).length;
+                for (let i = 0; i <= count; i++) {
+                    var Data_arr = [];
+
+                    if (id == myObj.cars[i].id) {
+                        if (myObj.cars[i].Availability) {
+                            // if (id == myObj.cars[i].id) {
+                            console.log(i + " " + myObj.cars[i].Availability);
+                            var item = JSON.parse(localStorage.getItem('myArray'))
+                            var isCarAlreadyNotAdded = true;
+
+                            if (item != null) {
+                                for (let i = 0; i < item.length; i++) {
+                                    console.log('loop hello ' + item[i].Brand);
+                                    if (id == item[i].id)
+                                        isCarAlreadyNotAdded = false;
+                                    Data_arr.push(item[i]);
+
+                                }
+
+                            }
+                            if (isCarAlreadyNotAdded) {
+                                Data_arr.push(myObj.cars[i]);
+                                alert(" Car add successfully");
+                            } else {
+                                alert('car alrady added ');
+                            }
+                            localStorage.setItem('myArray', JSON.stringify(Data_arr));
+                            // alert('add to card successfully ');
+                        } else {
+                            // console.log(" hello false  " + myObj.cars[i].Availability);
+                            alert("Sorry, the car is notavailable now.Pleasetry other cars ");
+
+
+                        }
+                    }
+                }
+
+            });
+        }
+    </script>
+
+</body>
+
+</html>

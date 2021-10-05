@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: plum;
+        }
+        
+        h1,
+        h2 {
+            padding: auto;
+            margin: auto;
+        }
+        
+        input[type=text],
+        select {
+            width: 80%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+        
+        input[type=submit] {
+            background-color: #1e09d3;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            margin-right: 10px;
+        }
+        
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+        
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .col-25,
+            .col-75,
+            input[type=submit] {
+                width: 90%;
+                margin-top: 0;
+            }
+        }
+        
+        .required {
+            color: red;
+        }
+        
+        .btn {
+            background-color: #1e09d3;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+            border-radius: 2px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <h1 style="background-color: black;text-align: center;color: white; height: 60px;">Car Rental Center</h1>
+    <h2 style="text-align: center;">Car Rental Center</h2>
+    <div class="container" style="background-color: cadetblue; color: cornsilk;border: 3px solid orange;">
+        <!-- <form action="#" name="form1"> -->
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">First Name <span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="lname">Last Name<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="email">Email  Address<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="email" name="Email" placeholder="Your Email address.." required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="address">Address line1<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="address1" name="address" placeholder="Your address.." required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="address">Address line2</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="address2" name="address" placeholder="Your address..">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="city">City <span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="city" name="city" placeholder="Your city.." required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="state">State <span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <select id="state" name="state">
+          <option value="up">Goa</option>
+          <option value="mp">Madhya Pradesh</option>
+          <option value="cg">Chhattisgarh</option>
+          <option value="cg">Haryana</option>
+        </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="postcode">Post Code <span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="postcode" name="postcode" placeholder="Your post code.." required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="country">Payment Type <span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <select id="payment" name="payment">
+          <option value="australia">VISA</option>
+          <option value="canada">Paypal</option>
+          <option value="usa">Check</option>
+        </select>
+            </div>
+        </div>
+        <p>You are required to Pay :-$ <span id="value"></span></p>
+        <div class="row">
+            <input type="submit" onclick="data();" name="Validate" value="Booking">&nbsp;
+            <a href="index.html"><input type="button" class="btn" value="Continue shopping" style="font-size: 16px;float: right;border:none;margin-right: 20px;"> </a>
+
+        </div>
+        <!-- </form> -->
+    </div>
+    <script>
+        var totalamount = localStorage.getItem('totalamount');
+        document.getElementById('value').innerHTML = totalamount;
+
+        function data() {
+            var fname = document.getElementById('fname').value;
+            console.log(fname);
+            localStorage.setItem('fname', fname);
+
+            var lname = document.getElementById('lname').value;
+            console.log(lname);
+            localStorage.setItem('lname', lname);
+
+            var email = document.getElementById('email').value;
+            console.log(email);
+            if (!ValidateEmail(email)) {
+
+                window.location.href = 'CheckOut.html';
+            } else {
+                localStorage.setItem('email', email);
+
+                var address1 = document.getElementById('address1').value;
+                console.log(address1);
+                localStorage.setItem('address1', address1);
+
+                var address2 = document.getElementById('address2').value;
+                console.log(address2);
+                localStorage.setItem('address2', address2);
+
+                var city = document.getElementById('city').value;
+                console.log(city);
+                localStorage.setItem('city', city);
+
+                var state = document.getElementById('state').value;
+                console.log(state);
+                localStorage.setItem('state', state);
+
+                var postcode = document.getElementById('postcode').value;
+                console.log(postcode);
+                localStorage.setItem('postcode', postcode);
+
+                let pay_Type = document.getElementById('payment').value;
+                localStorage.setItem('pay_Type', pay_Type);
+
+                window.location.href = 'cost.html';
+
+            }
+
+
+
+
+
+        }
+
+        function ValidateEmail(inputText) {
+            var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (inputText.match(mailformat)) {
+
+                return true;
+            } else {
+                alert("You have entered an invalid email address!");
+
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
